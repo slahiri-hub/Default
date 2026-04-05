@@ -22,9 +22,9 @@ import sys
 # Positional tie-breaking scores used when two moves have equal Minimax scores.
 # Edges (score 2) are preferred over the center (score 1) over corners (score 0).
 POS_SCORE = [
+    [1, 0, 1],
     [0, 2, 0],
-    [2, 1, 2],
-    [0, 2, 0],
+    [1, 0, 1],
 ]
 
 # All 8 possible winning lines: 3 rows, 3 columns, and 2 diagonals.
