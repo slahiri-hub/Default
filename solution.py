@@ -1,10 +1,10 @@
 import sys
 
-# Positional scores for tie-breaking: center > edges > corners
+# Positional scores for tie-breaking: edges > center > corners
 POS_SCORE = [
-    [0, 1, 0],
-    [1, 2, 1],
-    [0, 1, 0],
+    [0, 2, 0],
+    [2, 1, 2],
+    [0, 2, 0],
 ]
 
 # All 8 winning lines: 3 rows, 3 cols, 2 diagonals
