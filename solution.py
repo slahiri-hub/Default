@@ -82,5 +82,7 @@ def nextMove(player, board):
 
 data = sys.stdin.read().split()
 player = data[0]
-board = [[data[i * 3 + j + 1] for j in range(3)] for i in range(3)]
+# Expand tokens character by character to handle both "_ X O" and "_ XO" formats
+cells = [ch for token in data[1:] for ch in token]
+board = [[cells[i * 3 + j] for j in range(3)] for i in range(3)]
 nextMove(player, board)
