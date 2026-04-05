@@ -20,7 +20,7 @@ Scoring:
 import sys
 
 # Positional tie-breaking scores used when two moves have equal Minimax scores.
-# Edges (score 2) are preferred over the center (score 1) over corners (score 0).
+# Center (score 2) are preferred over the corners (score 1) over edges (score 0).
 POS_SCORE = [
     [1, 0, 1],
     [0, 2, 0],
