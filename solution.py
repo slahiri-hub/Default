@@ -1,5 +1,12 @@
 import sys
 
+# Positional scores for tie-breaking: center > edges > corners
+POS_SCORE = [
+    [0, 1, 0],
+    [1, 2, 1],
+    [0, 1, 0],
+]
+
 # All 8 winning lines: 3 rows, 3 cols, 2 diagonals
 LINES = [
     [(0, 0), (0, 1), (0, 2)],
@@ -63,6 +70,7 @@ def minimax(board, depth, is_maximizing, alpha, beta):
 def nextMove(player, board):
     is_maximizing = (player == 'X')
     best_score = float('-inf') if is_maximizing else float('inf')
+    best_pos = -1
     best_row, best_col = -1, -1
 
     for r, c in get_empty_cells(board):
@@ -70,12 +78,15 @@ def nextMove(player, board):
         score = minimax(board, 1, not is_maximizing, float('-inf'), float('inf'))
         board[r][c] = '_'
 
-        if is_maximizing and score > best_score:
-            best_score = score
-            best_row, best_col = r, c
-        elif not is_maximizing and score < best_score:
-            best_score = score
-            best_row, best_col = r, c
+        pos = POS_SCORE[r][c]
+        if is_maximizing:
+            if score > best_score or (score == best_score and pos > best_pos):
+                best_score, best_pos = score, pos
+                best_row, best_col = r, c
+        else:
+            if score < best_score or (score == best_score and pos > best_pos):
+                best_score, best_pos = score, pos
+                best_row, best_col = r, c
 
     print(best_row, best_col)
 
