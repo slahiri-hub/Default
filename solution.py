@@ -12,9 +12,9 @@ influence the final decision, significantly reducing the number of nodes
 evaluated without changing the result.
 
 Scoring:
-  - X wins  →  +( 10 - depth )   (earlier wins score higher)
-  - O wins  →  -( 10 - depth )   (earlier losses score lower)
-  - Draw    →   0
+  - X wins  ->  +( 10 - depth )   (earlier wins score higher)
+  - O wins  ->  -( 10 - depth )   (earlier losses score lower)
+  - Draw    ->   0
 """
 
 import sys
@@ -89,7 +89,7 @@ def minimax(board, depth, is_maximizing, alpha, beta):
 
     empties = get_empty_cells(board)
     if not empties:
-        # No winner and no moves left — the game is a draw
+        # No winner and no moves left - the game is a draw
         return 0
 
     # --- Recursive case ---
