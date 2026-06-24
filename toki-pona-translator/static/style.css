@@ -1,0 +1,242 @@
+:root {
+  --bg: #f6f5f1;
+  --panel: #ffffff;
+  --border: #ddd8cc;
+  --ink: #232017;
+  --muted: #6b6657;
+  --accent: #b8501e;
+  --accent-ink: #ffffff;
+  --note-bg: #fff4e0;
+  --note-border: #e8c98a;
+  --radius: 10px;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: "Segoe UI", system-ui, -apple-system, Helvetica, Arial, sans-serif;
+  background: var(--bg);
+  color: var(--ink);
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+.site-header {
+  text-align: center;
+  padding: 2rem 1rem 1rem;
+}
+
+.site-header h1 {
+  margin: 0;
+  font-size: 1.8rem;
+  font-weight: 600;
+}
+
+.site-header .arrow {
+  color: var(--accent);
+}
+
+.tagline {
+  margin: 0.4rem 0 0;
+  color: var(--muted);
+  font-size: 0.95rem;
+}
+
+.translator {
+  flex: 1;
+  width: 100%;
+  max-width: 900px;
+  margin: 1rem auto 2rem;
+  padding: 0 1rem;
+}
+
+.lang-bar {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  margin-bottom: 0.75rem;
+  flex-wrap: wrap;
+}
+
+.lang-btn {
+  flex: 1;
+  min-width: 120px;
+  padding: 0.6rem 1rem;
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  background: var(--panel);
+  color: var(--muted);
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.15s, color 0.15s;
+}
+
+.lang-btn[aria-pressed="true"] {
+  background: var(--accent);
+  color: var(--accent-ink);
+  border-color: var(--accent);
+}
+
+.swap-btn {
+  flex: 0 0 auto;
+  width: 2.4rem;
+  height: 2.4rem;
+  border-radius: 50%;
+  border: 1px solid var(--border);
+  background: var(--panel);
+  font-size: 1.2rem;
+  cursor: pointer;
+  transition: transform 0.15s;
+}
+
+.swap-btn:hover {
+  transform: rotate(180deg);
+}
+
+.auto-toggle {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  font-size: 0.85rem;
+  color: var(--muted);
+  white-space: nowrap;
+}
+
+.panes {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1rem;
+}
+
+@media (max-width: 640px) {
+  .panes {
+    grid-template-columns: 1fr;
+  }
+}
+
+.pane {
+  background: var(--panel);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  display: flex;
+  flex-direction: column;
+  min-height: 220px;
+}
+
+#input-text {
+  flex: 1;
+  width: 100%;
+  border: none;
+  resize: none;
+  padding: 1rem;
+  font-size: 1.1rem;
+  font-family: inherit;
+  background: transparent;
+  color: var(--ink);
+  border-radius: var(--radius) var(--radius) 0 0;
+}
+
+#input-text:focus {
+  outline: none;
+}
+
+.output {
+  flex: 1;
+  padding: 1rem;
+  font-size: 1.1rem;
+  white-space: pre-wrap;
+  word-break: break-word;
+}
+
+.output .placeholder {
+  color: var(--muted);
+}
+
+.output .unknown {
+  color: var(--accent);
+  font-weight: 600;
+}
+
+.pane-footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0.4rem 0.75rem;
+  border-top: 1px solid var(--border);
+  font-size: 0.8rem;
+  color: var(--muted);
+}
+
+.text-btn {
+  border: none;
+  background: none;
+  color: var(--accent);
+  font-size: 0.85rem;
+  cursor: pointer;
+  padding: 0.2rem 0.4rem;
+}
+
+.text-btn:hover {
+  text-decoration: underline;
+}
+
+.note {
+  margin-top: 1rem;
+  padding: 0.7rem 1rem;
+  background: var(--note-bg);
+  border: 1px solid var(--note-border);
+  border-radius: var(--radius);
+  font-size: 0.9rem;
+}
+
+.note.swap-suggestion {
+  cursor: pointer;
+  font-weight: 600;
+}
+
+.alternates {
+  margin-top: 1rem;
+}
+
+.alternates h2 {
+  font-size: 0.85rem;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  color: var(--muted);
+  margin: 0 0 0.5rem;
+}
+
+.alternates ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+.alternates li {
+  background: var(--panel);
+  border: 1px solid var(--border);
+  border-radius: 999px;
+  padding: 0.35rem 0.9rem;
+  font-size: 0.9rem;
+  cursor: pointer;
+}
+
+.alternates li:hover {
+  border-color: var(--accent);
+  color: var(--accent);
+}
+
+.site-footer {
+  text-align: center;
+  color: var(--muted);
+  font-size: 0.8rem;
+  padding: 1rem;
+}
